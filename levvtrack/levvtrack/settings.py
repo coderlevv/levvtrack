@@ -46,7 +46,7 @@ DEBUG = env_bool("DEBUG", default=False)
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1']
 else:
-    env_list("ALLOWED_HOSTS")
+    ALLOWED_HOSTS = env_list("ALLOWED_HOSTS")
 
 
 # Application definition
