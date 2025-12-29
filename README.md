@@ -1,3 +1,3 @@
 # levvtrack
 
-A basic web application for food tracking.
+A basic Django-based web application for food tracking.
