@@ -1,0 +1,403 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling as flex container */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Wrapper to manage main content and footer */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow wrapper to grow and fill available space */
+}
+
+/* Container to center content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #228B22; /* Forest Green */
+    color: #fff;
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ddd;
+}
+
+/* Main Content */
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0; /* Vertical margins only */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex: 1; /* Allow content to grow and fill available space */
+}
+
+/* Buttons */
+
+.btn {
+    border: none;
+    color: #fff; /* White text */
+    padding: 7px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    cursor: pointer;
+    width: 7em;
+}
+
+.btn-add {
+    background-color: #adb5bd;
+}
+
+.btn-add:hover {
+    background-color: #868e96;
+}
+
+.btn-show {
+    background-color: #adb5bd;
+}
+
+.btn-show:hover {
+    background-color: #868e96;
+}
+
+/* Delete Button Styling */
+.btn-delete {
+    background-color: #dd4949;                /* Red color for delete */
+}
+
+.btn-delete:hover {
+    background-color: #ac0000; /* Darker red on hover */
+}
+
+/* Save Entry Button Styling */
+.btn-save {
+    background-color: #adb5bd; /* Forest Green */
+}
+
+.btn-save:hover {
+    background-color: #868e96; /* Darker green on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Clear cart Button Styling */
+.btn-clear {
+    background-color: #adb5bd;  /* Forest Green */
+}
+
+.btn-clear:hover {
+    background-color:  #868e96; /* Darker green on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Delete Button Styling */
+.delete-x {
+    background-color: transparent; /* Transparent background */
+    border: none;                  /* No border */
+    color: #ff4d4d;                /* Red color for delete */
+    font-size: 1.2em;              /* Larger font for visibility */
+    cursor: pointer;               /* Pointer cursor on hover */
+    transition: color 0.3s ease;
+}
+
+.delete-x:hover {
+    color: #cc0000; /* Darker red on hover */
+}
+
+/* Date picker styling */
+.date-picker {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+/* Summary Section Styling */
+.summary-entry-totals {
+    font-size: 0.8em; /* Smaller font than main content */
+    border: 2px solid #228B22; /* Forest Green border */
+    padding: 10px;
+    margin-top: 30px; /* Space above the summary section */
+    border-radius: 6px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for contrast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Bold Styling for Total Kcal */
+.summary-entry-totals .total-kcal {
+    font-weight: bold;
+    color: #228B22; /* Forest Green text color for emphasis */
+}
+
+/* Optional: Styling for Other Nutrient Totals */
+.summary-entry-totals span {
+    color: #555; /* Dark gray for other nutrients */
+}
+
+/* Food Entries List Styling */
+/* TODO: adapt nutrient color to slate blue #6A5ACD */
+.list-items {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;            /* Remove default padding */
+    margin: 5px 0;        /* Add vertical spacing */
+}
+
+.list-items li {
+    margin-bottom: 5px; /* Space between list items */
+}
+
+.list-items a,
+.list-items span {
+    display: block;                   /* Make the entire area clickable */
+    padding: 3px;                     /* Internal spacing */
+    background-color: #fff;           /* White background for contrast */
+    color: #228B22;                   /* Forest Green text */
+    text-decoration: none;            /* Remove underline */
+    border: 1px solid #ccc;           /* Light gray border */
+    border-radius: 4px;               /* Rounded corners */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.list-items a:hover,
+.list-items span:hover {
+    background-color: #f0fff0;        /* Light green background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+/* Form Group Container */
+.form-group {
+    display: flex; /* Enables Flexbox */
+    align-items: center; /* Vertically centers items */
+    margin-bottom: 5px; /* Space between form groups */
+}
+
+/* Label Styling */
+.form-group label {
+    flex: 0 0 200px; /* Fixed width for labels */
+    margin-bottom: 0; /* Removes default bottom margin */
+    font-weight: bold;
+    color: #333; /* Dark gray for label text */
+    font-size: 1em;
+}
+
+/* Input Styling */
+.form-group .form-control {
+    flex: 1; /* Allows input to take up remaining space */
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus State for Inputs */
+.form-group .form-control:focus {
+    border-color: #228B22; /* Forest Green border on focus */
+    box-shadow: 0 0 5px rgba(34, 139, 34, 0.5); /* Semi-transparent green shadow */
+    outline: none;
+}
+
+/* Helper Text Styling (if applicable) */
+.form-group .form-text {
+    flex-basis: 200px; /* Aligns with label width */
+    color: #555; /* Dark gray for helper text */
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Action Buttons Container */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px;                 /* Space between buttons */
+    margin-top: 20px;          /* Space above the action buttons */
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Export Menu Styling */
+.export-menu {
+    background-color: #fff;        /* White background for contrast */
+    border: 1px solid #ccc;        /* Light gray border */
+    border-radius: 4px;            /* Rounded corners */
+    padding: 20px;
+    max-width: 300px;              /* Limit width for readability */
+    margin: 20px auto;             /* Centered horizontally with margin */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.export-menu h2 {
+    font-size: 1.25em;
+    margin-bottom: 15px;
+    color: #228B22;                /* Forest Green heading */
+}
+
+.export-menu ul {
+    list-style-type: none;         /* Remove bullet points */
+    padding: 0;                     /* Remove default padding */
+    margin: 0;                      /* Remove default margin */
+}
+
+.export-menu li {
+    margin-bottom: 10px;            /* Space between options */
+}
+
+.export-menu li:last-child {
+    margin-bottom: 0;               /* No margin after last item */
+}
+
+.export-menu a {
+    display: block;                  /* Block-level for full clickable area */
+    padding: 10px 15px;
+    background-color: #adb5bd;       /* Light gray background */
+    color: #fff;                     /* White text */
+    text-decoration: none;           /* Remove underline */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.export-menu a:hover {
+    background-color: #868e96;       /* Darker gray on hover */
+}
+
+/* Optional: Active State (if needed) */
+.export-menu a.active {
+    background-color: #6c757d;       /* Even darker gray to indicate selection */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        border-top: 1px solid #ccc;  /* Add top border for separation */
+        padding-top: 10px;            /* Space above each link */
+    }
+
+    .nav-links li:first-child {
+        border-top: none;             /* Remove border from the first link */
+        padding-top: 0;               /* Remove top padding */
+    }
+
+    /* Responsive Form Styling */
+    .btn {
+        width: 100%;                  /* Full-width buttons */
+        padding: 12px;                /* Increased padding for touch */
+        border-top: 1px solid #ccc;   /* Top border for separation */
+        box-sizing: border-box;       /* Include padding and border in width */
+    }
+
+    .btn-add-link {
+        text-decoration: none;
+    }
+
+    .btn:first-child {
+        border-top: none;             /* Remove border from the first button */
+    }
+
+    /* Ensure Buttons are Block-Level for Proper Stacking */
+    .btn-add,
+    .btn-save,
+    .btn-clear,
+    .btn-show {
+        display: block;               /* Ensure buttons take full width */
+        margin-bottom: 10px;          /* Space below each button */
+    }
+
+    .btn:last-child {
+        margin-bottom: 0;             /* Remove margin from the last button */
+    }
+
+    /* Stack Form Groups Vertically */
+    .form-group {
+        flex-direction: column;       /* Stack label and input vertically */
+        align-items: flex-start;      /* Align items to the start (left) */
+        margin-bottom: 15px;          /* Increased spacing between form groups */
+    }
+
+    .form-group label {
+        flex: 0 0 auto;               /* Remove fixed width */
+        margin-bottom: 5px;           /* Space between label and input */
+        width: 100%;                  /* Full width for better readability */
+    }
+
+    .form-group .form-control {
+        width: 100%;                  /* Full-width inputs */
+        flex: none;                   /* Remove flex property to prevent stretching */
+    }
+
+    /* Optional: Add Borders Between Form Groups */
+    .form-group:not(:last-child) {
+        border-bottom: 1px solid #ccc;/* Bottom border for separation */
+        padding-bottom: 15px;         /* Space below each form group */
+    }
+
+    /* Adjust Form Actions to Stack Vertically */
+    .form-actions {
+        flex-direction: column;       /* Stack buttons vertically */
+        align-items: stretch;         /* Stretch buttons to full width */
+        gap: 10px;                     /* Space between buttons */
+    }
+}

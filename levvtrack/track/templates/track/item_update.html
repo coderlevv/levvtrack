@@ -1,0 +1,70 @@
+{% extends "track/base.html" %}
+{% load form_tags %}
+{% block content %}
+    <h2>Edit item</h2>
+    <p><a href="{% url 'track:item_delete' item.id %}"><button class="btn btn-delete">Delete</button></a></p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.item_name.id_for_label }}">Item name</label>
+            {{ form.item_name|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.item_brand.id_for_label }}">Item brand</label>
+            {{ form.item_brand|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.item_ref_kcal.id_for_label }}">Item kcal</label>
+            {{ form.item_ref_kcal|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.item_ref_val.id_for_label }}">Reference value</label>
+            {{ form.item_ref_val|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.item_ref_unit.id_for_label }}">Reference unit</label>
+            {{ form.item_unit|add_class:"form-control" }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.nutrient.id_for_label }}">Item nutrient</label>
+            {{ form.nutrient|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.nutrient_val.id_for_label }}">Nutrient value</label>
+            {{ form.nutrient_val|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.nutrient_unit.id_for_label }}">Nutrient unit</label>
+            {{ form.nutrient_unit|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.nutrient_ref_val.id_for_label }}">Nutrient reference value</label>
+            {{ form.nutrient_ref_val|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.nutrient_ref_unit.id_for_label }}">Nutrient reference unit</label>
+            {{ form.nutrient_ref_unit|add_class:"form-control" }}
+        </div>
+
+        <button type="submit" class="btn btn-add" name="add">Add</button>
+        <button type="submit" class="btn btn-save" name="save">Save</button>
+
+        {% if cart_list %}
+        <ul class="list-items">
+            {% for item in cart_list %}
+            <li>
+            <span>
+                {{ item.0 }} {{ item.1 }} {{ item.2 }} / {{ item.3 }} {{ item.4 }}
+                <button type="submit" class="delete-x" name="delete-{{ forloop.counter0 }}">
+                    &times; <!-- HTML entity for multiplication sign (X) -->
+                </button>
+            </span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No nutrients available</p>
+        {% endif %}
+    </form>
+{% endblock content %}

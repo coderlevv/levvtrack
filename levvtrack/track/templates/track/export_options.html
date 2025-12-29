@@ -1,0 +1,10 @@
+{% extends "track/base.html" %}
+{% block content %}
+<div class="export-menu">
+    <h2>Export Options</h2>
+    <ul>
+      <li><a href="{% url 'track:export_csv' %}">Aggregated nutrients per day</a></li>
+      <li><a href="{% url 'track:export_item_csv' %}">Item data</a></li>
+    </ul>
+  </div>
+{% endblock content %}

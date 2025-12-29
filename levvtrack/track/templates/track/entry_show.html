@@ -1,0 +1,42 @@
+{% extends "track/base.html" %}
+{% load form_tags %}
+{% block content %}
+    <h2>Food entries by date</h2>
+    <form id="entry-show-form" action="{% url 'track:entry_show' %}" method="post">
+        {% csrf_token %}
+        <div class="date-picker">
+        <label for="date-select">Pick a date:</label>
+        {{ form.showDate }}
+        <!-- 
+        <input type="date" id="date-select" name="date-select" class="form-control" value="{{ by_date|date:"Y-m-d" }}" />
+        -->
+        </div>
+    </form>
+    <p>
+        <a class="btn-add-link" href="{% url 'track:entry_create' %}">
+        <button class="btn btn-add">Add</button>
+        </a>
+    </p>
+    {% if entries %}
+        <ul class="list-items">
+        {% for entry in entries %}
+            <li>
+                <a href="{% url 'track:entry_update' entry.id %}">{{ entry }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <div class="summary-entry-totals">
+            <p><span class="total-kcal">Total kcal = {{ total_kcal }}</span></p>
+            {% for nut in total_nuts %}
+                <p><span>Total {{nut.0}} = {{nut.1}} {{nut.2}}</span></p>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No data available</p>
+    {% endif %}
+    <script>
+        const entryShowForm = document.getElementById('entry-show-form');
+        const dateSelect = document.getElementById('date-picker');
+        dateSelect.addEventListener('change', () => entryShowForm.submit());
+    </script>
+{% endblock content %}

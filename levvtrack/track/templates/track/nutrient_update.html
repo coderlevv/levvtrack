@@ -1,0 +1,22 @@
+{% extends "track/base.html" %}
+{% load form_tags %}
+{% block content %}
+    <h1>Edit nutrient</h1>
+    <p>
+        <a href="{% url 'track:nutrient_delete' nutrient.id %}">
+        <button class="btn btn-delete">Delete</button>
+        </a>
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.nutrient_name.id_for_label }}">Nutrient name</label>
+            {{ form.nutrient_name|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.nutrient_description.id_for_label }}">Nutrient description</label>
+            {{ form.nutrient_description|add_class:"form-control" }}
+        </div>
+        <button class="btn btn-save" type="submit">Save</Button>
+    </form>
+{% endblock content %}

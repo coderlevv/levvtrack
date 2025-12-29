@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'track/styles.css' %}">
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="{% url 'track:entry_show' %}" class="nav-logo">Levv's Food Tracker - levvtrack</a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'track:entry_show' %}">Entries</a></li>
+                    <li><a href="{% url 'track:item_show' %}">Items</a></li>
+                    <li><a href="{% url 'track:nutrient_show' %}">Nutrients</a></li>
+                    <li><a href="{% url 'track:export_options' %}">Export</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Main Content -->
+        <div class="wrapper">
+            <main class="content">
+                <div class="container">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </main>
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    Levv's Food Tracker - levvtrack
+                </div>
+            </footer>
+    </div>
+    </body>
+</html>

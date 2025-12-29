@@ -1,0 +1,16 @@
+{% extends "track/base.html" %}
+{% block content %}
+    <h2>Available nutrients ({{ nutrient_list|length }})</h2>
+    <p><a class="btn-add-link" href="{% url 'track:nutrient_create' %}"><button class="btn btn-add">Add</button></a></p>
+    {% if nutrient_list %}
+        <ul class="list-items">
+        {% for nutrient in nutrient_list %}
+        <li>
+        <a href="{% url 'track:nutrient_update' nutrient.id %}">{{ nutrient }}</a>
+        </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No nutrients available</p>
+    {% endif %}
+{% endblock content %}

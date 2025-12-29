@@ -1,0 +1,62 @@
+{% extends "track/base.html" %}
+{% load form_tags %}
+{% block content %}
+    <h2>Edit entry</h2>
+    <p>
+        <a href="{% url 'track:entry_delete' entry.id %}">
+            <button class="btn btn-delete">Delete</button>
+        </a>
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="from-error"><strong>{{ error }}</strong></p>
+            {% endfor %}
+         {% endif %}
+        <div class="form-group">
+            <label for="{{ form.entry_name.id_for_label }}">Entry name</label>
+            {{ form.entry_name|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.entry_date.id_for_label }}">Entry date</label>
+            {{ form.entry_date|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.entry_main.id_for_label }}">Main course</label>
+            {{ form.entry_main|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.entry_total_kcal.id_for_label }}">Total kcal (overrride)</label>
+            {{ form.entry_total_kcal|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.item.id_for_label }}">Item</label>
+            {{ form.item|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.qty.id_for_label }}">Item quantity</label>
+            {{ form.qty|add_class:"form-control" }}
+        </div>
+
+        <button class="btn btn-add" type="submit" name="add">Add</button>
+        <button class="btn btn-save" type="submit" name="save">Save</button>
+
+        {% if cart_list %}
+        <ul class="list-items">
+            {% for item in cart_list %}
+            <li>
+            <span>
+                {{ item.0 }} = {{ item.1 }} kcal
+                <button type="submit" class="delete-x" name="delete-{{ forloop.counter0 }}">
+                    &times; <!-- HTML entity for multiplication sign (X) -->
+                </button>
+            </span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No items available</p>
+        {% endif %}
+    </form>
+{% endblock content %}

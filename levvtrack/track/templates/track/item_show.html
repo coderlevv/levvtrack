@@ -1,0 +1,16 @@
+{% extends "track/base.html" %}
+{% block content %}
+    <h2>Available items ({{ item_list|length }})</h2>
+    <p><a class="btn-add-link" href="{% url 'track:item_create' %}"><button class="btn btn-add">Add</button></a></p>
+    {% if item_list %}
+        <ul class="list-items">
+            {% for item in item_list %}
+            <li>
+            <a href="{% url 'track:item_update' item.id %}">{{ item }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items available</p>
+    {% endif %}
+{% endblock content %}
