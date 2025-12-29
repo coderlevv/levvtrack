@@ -68,10 +68,11 @@ def item_create(request):
                 nutrient_unit = form.cleaned_data["nutrient_unit"]
                 nutrient_ref_val = form.cleaned_data["nutrient_ref_val"]
                 nutrient_ref_unit = form.cleaned_data["nutrient_ref_unit"]
-                if "nutrient_cart" in request.session:
-                    request.session["nutrient_cart"] += [[nutrient.pk, nutrient_val, nutrient_unit.pk, nutrient_ref_val, nutrient_ref_unit.pk]]
-                else:
-                    request.session["nutrient_cart"] = [[nutrient.pk, nutrient_val, nutrient_unit.pk, nutrient_ref_val, nutrient_ref_unit.pk]]
+                if nutrient:
+                    if "nutrient_cart" in request.session:
+                        request.session["nutrient_cart"] += [[nutrient.pk, nutrient_val, nutrient_unit.pk, nutrient_ref_val, nutrient_ref_unit.pk]]
+                    else:
+                        request.session["nutrient_cart"] = [[nutrient.pk, nutrient_val, nutrient_unit.pk, nutrient_ref_val, nutrient_ref_unit.pk]]
         if len(delete_key) > 0:
             delete_idx = int(delete_key[0].split("-")[1])
             request.session["nutrient_cart"].pop(delete_idx)
