@@ -36,7 +36,7 @@ On the **Entry** page click the *Add* button. Without any food items defined, yo
 ### Adding nutrients
 To enable more fine-grained tracking, you can define nutrients that should be tracked.
 
-For example, to track fiber intake, go to the **Nutrient** page, enter the nutrient name (e.g. *Fiber*), and press *Save*.
+For example, to track fiber intake, go to the **Nutrient** page, press the *Add* button, enter the nutrient name (e.g. *Fiber*), and press *Save*.
 
 ### Adding food items
 Once nutrients are defined, you can associate them with food items.
