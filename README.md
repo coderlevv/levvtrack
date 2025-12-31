@@ -62,4 +62,4 @@ accounts can be created via the Django admin interface, records are not associat
 - Data export currently runs synchronously. With larger datasets, CSV
 generation may take some time during which the browser tab remains blocked.
 
-- Only grams (g) are supported as item and reference units at the moment.
+- Only grams (g) are supported as item and reference units by the UI at the moment. As a work around you can log in to Django admin (127.0.0.1:8000/admin) with your superuser credentials as created at installation and add additional units there.
