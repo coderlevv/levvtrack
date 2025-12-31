@@ -69,7 +69,7 @@ class QtyItem(models.Model):
     Now that the item is quantified, kcal and nutrient content can be computed.
     """
     
-    qty_item = models.ForeignKey(Item, on_delete=models.SET_NULL, null=True)
+    qty_item = models.ForeignKey(Item, on_delete=models.PROTECT, null=False)
     qty_quantity = models.PositiveIntegerField()
 
     @property
