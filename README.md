@@ -1,6 +1,6 @@
 # levvtrack
 
-A basic Django-based web application for tracking daily food & nutrient intake.
+A Django-based web application for tracking daily food & nutrient intake.
 
 This is a personal project developed for private use. The app works well
 alongside a smartwatch or fitness tracker that records burned calories,
@@ -25,9 +25,9 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Open your browser and point it to the address given by the development server output (default http://127.0.0.1:8000).
+Open your browser and point it to the address given by the development server output (default: 127.0.0.1:8000).
 
-## Basic Usage
+## Basic usage
 
 Out of the box, the app supports tracking of total kcal intake.
 
@@ -48,7 +48,7 @@ Open the nutrient menu, select *Fiber*, and enter the fiber content
 
 Repeat this process to add additional nutrients to food items.
 
-### Adding Entries
+### Adding food entries
 After nutrients and items are available, they can be combined into entries representing consumed meals.
 
 For example, if you had spaghetti with broccoli, click *Add* on the **Entry** page, name the entry accordingly, and add the consumed amounts of broccoli, spaghetti, and any other ingredients (which should be defined as items first).
