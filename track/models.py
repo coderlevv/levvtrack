@@ -34,12 +34,12 @@ class ItemNutrient(models.Model):
     class Meta:
         ordering = ('itemnut_name__nutrient_name', 'itemnut_val')
 
-    itemnut_name = models.ForeignKey(Nutrient, on_delete=models.RESTRICT)
+    itemnut_name = models.ForeignKey(Nutrient, on_delete=models.PROTECT, null=False)
     itemnut_val = models.DecimalField(max_digits=5, decimal_places=2)
-    itemnut_unit = models.ForeignKey(Unit, on_delete=models.SET_DEFAULT,
+    itemnut_unit = models.ForeignKey(Unit, on_delete=models.PROTECT,
                                 default=Unit.get_default_unit, related_name="nutrients")
     itemnut_ref_val = models.PositiveIntegerField(default=100)
-    itemnut_ref_unit = models.ForeignKey(Unit, on_delete=models.SET_DEFAULT,
+    itemnut_ref_unit = models.ForeignKey(Unit, on_delete=models.PROTECT,
                                 default=Unit.get_default_unit, related_name="nutrients_ref")
     
     def __str__(self):

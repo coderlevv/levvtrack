@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from ..models import Nutrient
 from ..forms import NutrientForm
+from django.db import transaction
+from django.db.models.deletion import ProtectedError
 
 
 @login_required
@@ -16,7 +18,8 @@ def nutrient_create(request):
     if request.method == "POST":
         form = NutrientForm(request.POST)
         if form.is_valid():
-            form.save()
+            with transaction.atomic():
+                form.save()
             return redirect("track:nutrient_show")
     form = NutrientForm()
     context = { 'form': form }
@@ -29,7 +32,8 @@ def nutrient_update(request, nutrient_id):
     if request.method == "POST":
         form = NutrientForm(request.POST, instance=nutrient)
         if form.is_valid():
-            form.save()
+            with transaction.atomic():
+                form.save()
             return redirect("track:nutrient_show")
     else:
         form = NutrientForm(instance=nutrient)
@@ -42,6 +46,10 @@ def nutrient_delete(request, nutrient_id):
     nutrient = get_object_or_404(Nutrient, pk=nutrient_id)
     context = { "nutrient": nutrient }
     if request.method == "POST":
-        nutrient.delete()
+        with transaction.atomic():
+            try:
+                nutrient.delete()
+            except ProtectedError:
+                pass
         return redirect("track:nutrient_show")
     return render(request, "track/nutrient_delete.html", context)
