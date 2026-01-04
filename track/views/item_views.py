@@ -17,14 +17,15 @@ def item_show(request):
 @login_required
 def item_delete(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
-    context = { "item": item }
+    context = { "item": item, "error": None }
     if request.method == "POST":
         with transaction.atomic():
             try:
                 item.delete()
             except ProtectedError:
-               pass
-        return redirect("track:item_show")
+                context["error"] = "Item is associated with one or more entries, cannot delete it!"
+            else:
+                return redirect("track:item_show")
     return render(request, "track/item_delete.html", context)
 
 

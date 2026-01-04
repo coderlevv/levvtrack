@@ -5,6 +5,9 @@
 <h4>{{ item }}</h4>
 <form action="{% url 'track:item_delete' item.id %}" method="post">
 {% csrf_token %}
+{% if error %}
+    <p class="from-error"><strong>{{ error }}</strong></p>
+{% endif %}
 <button class="btn btn-delete" type="submit">Delete</button>
 </form>
 {% endblock content %}

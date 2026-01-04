@@ -44,12 +44,13 @@ def nutrient_update(request, nutrient_id):
 @login_required
 def nutrient_delete(request, nutrient_id):
     nutrient = get_object_or_404(Nutrient, pk=nutrient_id)
-    context = { "nutrient": nutrient }
+    context = { "nutrient": nutrient, "error": None }
     if request.method == "POST":
         with transaction.atomic():
             try:
                 nutrient.delete()
             except ProtectedError:
-                pass
-        return redirect("track:nutrient_show")
+                context["error"] = "Nutrient is associated with one or more entries, cannot delete it!"
+            else:
+                return redirect("track:nutrient_show")
     return render(request, "track/nutrient_delete.html", context)
